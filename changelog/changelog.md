@@ -1,3 +1,10 @@
+## Version 2.1.1(09/17/2026)
+
+### Changed
+
+1. Move the theme repository to `0froq/Qlean`.
+2. Add a maintenance notice: I barely use Obsidian anymore, so updates will almost stop, and support for new versions and features may be slow.
+
 ## Version 2.1.0(10/09/2025)
 
 ### Fixed
