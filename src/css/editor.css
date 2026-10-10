@@ -1,0 +1,326 @@
+:is(.markdown-rendered, .style-settings-container) p {
+  margin: 2em 0;
+}
+:is(.markdown-rendered, .style-settings-container) p,
+.markdown-source-view.is-live-preview .cm-line
+{
+  font-family: var(--font-text);
+  font-size: var(--font-text-size);
+  font-weight: var(--font-text-weight);
+  color: var(--text-normal);
+  line-height: 2;
+}
+:is(.markdown-rendered, .style-settings-container) h1,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-1
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h1-size);
+  font-weight: var(--font-h1-weight);
+  color: var(--h1-color);
+}
+:is(.markdown-rendered, .style-settings-container) h2,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-2
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h2-size);
+  font-weight: var(--font-h2-weight);
+  color: var(--h2-color);
+}
+:is(.markdown-rendered, .style-settings-container) h3,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-3
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h3-size);
+  font-weight: var(--font-h3-weight);
+  color: var(--h3-color);
+}
+:is(.markdown-rendered, .style-settings-container) h4,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-4
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h4-size);
+  font-weight: var(--font-h4-weight);
+  color: var(--h4-color);
+}
+:is(.markdown-rendered, .style-settings-container) h5,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-5
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h5-size);
+  font-weight: var(--font-h5-weight);
+  color: var(--h5-color);
+}
+:is(.markdown-rendered, .style-settings-container) h6,
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header-6
+{
+  font-family: var(--font-header);
+  font-size: var(--font-h6-size);
+  font-weight: var(--font-h6-weight);
+  color: var(--h6-color);
+}
+:is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6) {
+  margin: calc(var(--font-text-size) * 2.5) 0;
+}
+body:not(.qlean-off-header-level-indicator) {
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header,
+  & :is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6)
+  {
+    &::before {
+      font-family: var(--font-text);
+      font-size: 0.7em;
+      font-weight: 100;
+      color: var(--text-muted);
+      position: relative;
+      width: 1.25em;
+      margin: 0 0.25em 0 0;
+      transition: all 0.2s;
+    }
+    &:has(.is-collapsed):before {
+      color: var(--text-strong);
+    }
+    & .collapse-indicator {
+      cursor: pointer;
+      & svg {
+        opacity: 0;
+      }
+    }
+  }
+  & :is(.markdown-rendered, .style-settings-container) h1,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-1
+  {
+    &:before {
+      content: "#1";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-1 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 1), 0) scale(calc(1.8 - 0.1 * 1), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h1 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 1), calc(-1.5em + 0em * 1)) scale(calc(1.8 - 0.1 * 1), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h2,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-2
+  {
+    &:before {
+      content: "#2";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-2 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 2), 0) scale(calc(1.8 - 0.1 * 2), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h2 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 2), calc(-1.5em + 0em * 2)) scale(calc(1.8 - 0.1 * 2), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h3,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-3
+  {
+    &:before {
+      content: "#3";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-3 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 3), 0) scale(calc(1.8 - 0.1 * 3), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h3 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 3), calc(-1.5em + 0em * 3)) scale(calc(1.8 - 0.1 * 3), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h4,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4
+  {
+    &:before {
+      content: "#4";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-4 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 4), 0) scale(calc(1.8 - 0.1 * 4), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h4 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 4), calc(-1.5em + 0em * 4)) scale(calc(1.8 - 0.1 * 4), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h5,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-5
+  {
+    &:before {
+      content: "#5";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-5 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 5), 0) scale(calc(1.8 - 0.1 * 5), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h5 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 5), calc(-1.5em + 0em * 5)) scale(calc(1.8 - 0.1 * 5), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h6,
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-6
+  {
+    &:before {
+      content: "#6";
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header-6 .collapse-indicator {
+    transform: translate(calc(-0.5em + 0.04em * 6), 0) scale(calc(1.8 - 0.1 * 6), 1);
+  }
+  & :is(.markdown-rendered, .style-settings-container) h6 .collapse-indicator {
+    transform: translate(calc(0.5em + 0.06em * 6), calc(-1.5em + 0em * 6)) scale(calc(1.8 - 0.1 * 6), 1);
+  }
+}
+:is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.is-live-preview .cm-line.HyperMD-header
+{
+  width: max-content;
+  max-width: 100%;
+  line-height: 1.5;
+  padding: 0;
+}
+body:not(.header-hovering-underline-none) {
+  & :is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6),
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header
+  {
+    &::after {
+      content: "";
+      display: block;
+      height: calc(0.125 * var(--font-text-size));
+      width: 0;
+      background-color: transparent;
+    }
+  }
+}
+body:not(.header-hovering-underline-none):not(.header-hovering-underline-fade) {
+  & :is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6),
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header
+  {
+    &::after {
+      background-color: var(--text-normal);
+      transition: width 0.2s;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+body.header-hovering-underline-fade {
+  & :is(.markdown-rendered, .style-settings-container) :is(h1, h2, h3, h4, h5, h6),
+  & .markdown-source-view.is-live-preview .cm-line.HyperMD-header
+  {
+    &::after {
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+    &:hover::after {
+      background-color: var(--text-normal);
+    }
+  }
+}
+:is(.markdown-rendered, .style-settings-container) a:not(.tag),
+.markdown-source-view.is-live-preview a
+{
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--font-text-weight);
+  color: var(--link-color);
+  text-decoration: var(--link-decoration-line) var(--link-decoration-style) var(--link-decoration-color) var(--link-decoration-thickness);
+  text-underline-offset: var(--link-decoration-offset);
+}
+.markdown-source-view.is-live-preview span:is(.cm-url, .cm-inline-code, .cm-link) {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.markdown-source-view.is-live-preview {
+  & span.cm-formatting.cm-link:not(.cm-url),
+  & span.cm-formatting-link-string
+  {
+    &,
+    &:hover
+    {
+      color: var(--text-normal);
+    }
+  }
+}
+:is(.markdown-rendered, .style-settings-container) strong,
+.markdown-source-view.is-live-preview .cm-strong,
+.markdown-source-view.is-live-preview strong
+{
+  font-family: var(--font-text);
+  font-size: var(--font-strong-size);
+  font-weight: var(--font-strong-weight);
+  color: var(--font-strong-color);
+  text-decoration: var(--font-strong-decoration-line) var(--font-strong-decoration-style) var(--font-strong-decoration-color) var(--font-strong-decoration-width);
+  text-underline-offset: var(--font-strong-decoration-offset);
+  font-style: var(--font-strong-style);
+}
+:is(.markdown-rendered, .style-settings-container) em,
+.markdown-source-view.is-live-preview .cm-em,
+.markdown-source-view.is-live-preview em
+{
+  font-family: var(--font-text);
+  font-size: var(--font-em-size);
+  font-weight: var(--font-em-weight);
+  color: var(--font-em-color);
+  text-decoration: var(--font-em-decoration-line) var(--font-em-decoration-style) var(--font-em-decoration-color) var(--font-em-decoration-width);
+  text-underline-offset: var(--font-em-decoration-offset);
+  font-style: var(--font-em-style);
+}
+:is(.markdown-rendered, .style-settings-container) mark,
+.markdown-source-view.is-live-preview .cm-highlight,
+.markdown-source-view.is-live-preview mark
+{
+  font-family: var(--font-text);
+  font-size: var(--font-highlight-size);
+  font-weight: var(--font-highlight-weight);
+  color: var(--font-highlight-color);
+  text-decoration: var(--font-highlight-decoration-line) var(--font-highlight-decoration-style) var(--font-highlight-decoration-color) var(--font-highlight-decoration-width);
+  text-underline-offset: var(--font-highlight-decoration-offset);
+  background-color: var(--font-highlight-bg-color);
+  font-style: var(--font-highlight-style);
+  padding: 0.125em 0.25em;
+  border-radius: 0.125em;
+  margin: 0.125em;
+}
+body.font-highlight-cover-mode {
+  & :is(.markdown-rendered, .style-settings-container) mark,
+  & .markdown-source-view.is-live-preview mark,
+  .markdown-source-view.is-live-preview :not(.cm-formatting-highlight) + .cm-highlight
+  {
+    transition: color 0.2s;
+    color: var(--font-highlight-bg-color);
+    &:hover {
+      color: var(--font-highlight-color);
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-highlight.cm-formatting-highlight,
+  & .markdown-source-view.is-live-preview .cm-active.cm-line .cm-highlight
+  {
+    color: var(--font-highlight-color);
+  }
+}
+:is(.markdown-rendered, .style-settings-container) del,
+.markdown-source-view.is-live-preview .cm-strikethrough,
+.markdown-source-view.is-live-preview del
+{
+  font-family: var(--font-text);
+  font-size: var(--font-strikethrough-size);
+  font-weight: var(--font-strikethrough-weight);
+  color: var(--font-strikethrough-color);
+  text-decoration: var(--font-strikethrough-decoration-line) var(--font-strikethrough-decoration-style) var(--font-strikethrough-decoration-color) var(--font-strikethrough-decoration-width);
+  font-style: var(--font-strikethrough-style);
+}
+:is(.markdown-rendered, .style-settings-container) u,
+.markdown-source-view.is-live-preview u
+{
+  font-family: var(--font-text);
+  font-size: var(--font-underlined-size);
+  font-weight: var(--font-underlined-weight);
+  color: var(--font-underlined-color);
+  text-decoration: var(--font-underlined-decoration-line) var(--font-underlined-decoration-style) var(--font-underlined-decoration-color) var(--font-underlined-decoration-width);
+  text-underline-offset: var(--font-underlined-decoration-offset);
+}
+:is(.markdown-rendered, .style-settings-container) .inline-title,
+.markdown-source-view.is-live-preview .inline-title
+{
+  font-family: var(--font-inline-title);
+  font-size: var(--font-inline-title-size);
+  font-weight: var(--font-inline-title-weight);
+  color: var(--text-strong);
+}

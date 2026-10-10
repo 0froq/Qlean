@@ -1,0 +1,238 @@
+.workspace-tab.mod-top,
+.workspace-tab-header-container,
+:is(.mod-macos, .mod-windows, .mod-linux).is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right
+{
+  background-color: var(--background-primary);
+}
+.workspace-ribbon:is(.mod-primary, .mod-left) {
+  &.is-collapsed:before {
+    transition: background-color 250ms 95ms ease-in-out;
+    background-color: var(--ribbon-background-collapsed);
+  }
+}
+.workspace {
+  &.is-left-sidedock-open {
+    & .side-dock-ribbon.mod-left {
+      background-color: var(--background-primary);
+    }
+  }
+  & :is(.mod-left-split, .mod-right-split) .workspace-tabs .workspace-tab-header-container-inner {
+    gap: 0;
+    & .workspace-tab-header {
+      min-width: 30px;
+      & svg {
+        transition: all 0.2s;
+      }
+      &:hover {
+        & .workspace-tab-header-inner {
+          background-color: transparent;
+        }
+        & svg {
+          stroke: var(--icon-color-hovering);
+        }
+      }
+      &.is-active {
+        & svg {
+          stroke: var(--icon-color-focused);
+        }
+      }
+    }
+  }
+  & .workspace-split.mod-vertical .workspace-tabs {
+    & .workspace-tab-container {
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        appearance: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        transition: background-color 0.2s ease;
+        border-radius: 0;
+        border-bottom: 2px solid var(--text-strong);
+        border-right: none;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--text-normal);
+      }
+    }
+    & .workspace-tab-container > .workspace-tab-header {
+      &:hover {
+        & .workspace-tab-header-inner {
+          background-color: var(--background-modifier-hover);
+          &:hover {
+            background-color: var(--background-modifier-hover);
+          }
+        }
+      }
+      &.is-active {
+        & .workspace-tab-header-inner {
+          background-color: var(--tab-active-bg-color);
+          & .workspace-tab-header-inner-icon,
+          & .workspace-tab-header-inner-title
+          {
+            color: var(--text-strong);
+          }
+          &:hover {
+            background-color: var(--tab-active-bg-color);
+          }
+        }
+      }
+      & .workspace-tab-header-inner {
+        border-right: 2px solid transparent;
+      }
+      &.is-active {
+        & .workspace-tab-header-inner {
+          background-color: var(--tab-active-bg-color);
+          border-right: 2px solid var(--text-muted);
+          & .workspace-tab-header-inner-title {
+            color: var(--text-strong);
+          }
+        }
+        &:not(.is-active):hover {
+          & .workspace-tab-header-inner-title {
+            color: var(--text-normal);
+          }
+        }
+        &.mod-active {
+          & .workspace-tab-header-inner {
+            border-right: 2px solid var(--color-accent);
+          }
+        }
+      }
+    }
+    & .workspace-tab-header-container-inner .workspace-tab-header {
+      border-width: 0;
+      border-radius: 0;
+      min-width: 100px;
+      height: 30px;
+      margin: 3.2px 5px 0 0;
+      padding: 1px 3px 1px;
+      color: var(--text-muted);
+      box-shadow: none;
+      & .workspace-tab-header-inner:after {
+        background-color: transparent;
+      }
+      & .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+        display: flex;
+        color: var(--text-normal);
+        &:hover {
+          color: var(--text-strong);
+          background-color: var(--close-button-hover-bg-color);
+        }
+      }
+      & .workspace-tab-header-inner {
+        border-bottom: 2px solid transparent;
+      }
+      &.is-active {
+        & .workspace-tab-header-inner {
+          background-color: var(--tab-active-bg-color);
+          border-bottom: 2px solid var(--text-muted);
+          & .workspace-tab-header-inner-title {
+            color: var(--text-strong);
+          }
+        }
+        &:not(.is-active):hover {
+          & .workspace-tab-header-inner-title {
+            color: var(--text-normal);
+          }
+        }
+        &.mod-active {
+          & .workspace-tab-header-inner {
+            border-bottom: 2px solid var(--color-accent);
+          }
+        }
+      }
+    }
+    & .workspace-tab-header-container-inner {
+      cursor: pointer;
+      margin: 0;
+      padding-top: 2px;
+      gap: 0;
+      & .workspace-tab-header {
+        background-color: transparent;
+        &:before,
+        &:after
+        {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+.markdown-source-view.is-live-preview :is(.cm-link, .cm-url, .cm-hmd-internal-link),
+:is(.markdown-rendered, .style-settings-container) a:not(.tag)
+{
+  text-underline-offset: var(--link-decoration-offset);
+  & a.cm-underline:hover {
+    color: var(--link-color);
+  }
+}
+.markdown-source-view.is-live-preview .cm-hmd-internal-link {
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.markdown-source-view.is-live-preview .is-unresolved,
+:is(.markdown-rendered, .style-settings-container) a.internal-link.is-unresolved
+{
+  & a.cm-underline:hover {
+    color: var(--link-color);
+  }
+}
+.workspace {
+  & .mod-left .side-dock-settings {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: 12px;
+    left: 4px;
+    width: 35px;
+  }
+}
+.clickable-icon:not([aria-disabled="true"]) {
+  cursor: pointer;
+  opacity: 1;
+  color: var(--text-muted);
+  background-color: transparent;
+  transition: color 0.2s, background-color 0.2s;
+  & svg {
+    transition: stroke 0.2s;
+  }
+  &:hover {
+    color: var(--text-strong);
+    opacity: 1;
+    background-color: transparent;
+    & svg {
+      stroke: var(--text-strong);
+    }
+  }
+  &[aria-disabled="true"] {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+.markdown-source-view.is-live-preview.mod-cm6 .cm-embed-block,
+:is(.markdown-rendered, .style-settings-container) .callout
+{
+  overflow-wrap: break-word;
+  &:hover {
+    box-shadow: none;
+  }
+}
+.markdown-source-view.is-live-preview.mod-cm6 .cm-embed-block {
+  &:hover {
+    & .edit-block-button {
+      & svg {
+        transition: stroke 0.2s;
+      }
+      &:hover {
+        background-color: transparent;
+        & svg {
+          stroke: var(--icon-color-hovering);
+        }
+      }
+    }
+  }
+}

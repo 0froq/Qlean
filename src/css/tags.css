@@ -1,0 +1,75 @@
+:is(.markdown-rendered, .style-settings-container) a.tag,
+.markdown-source-view.is-live-preview .cm-line .cm-hashtag,
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill
+{
+  font-family: var(--font-monospace);
+  font-size: var(--font-tag-size);
+  font-weight: var(--font-tag-weight);
+  color: var(--text-strong);
+  transition: all 0.2s;
+  border-width: 1px;
+}
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
+  & .multi-select-pill-content {
+    margin: 0;
+  }
+  & .multi-select-pill-remove-button {
+    cursor: pointer;
+    margin: 0;
+    & svg {
+      color: var(--text-normal);
+    }
+  }
+}
+:is(.markdown-rendered, .style-settings-container) a.tag,
+.metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill
+{
+  padding: 0 0.5em;
+}
+.markdown-source-view.is-live-preview .cm-line .cm-hashtag {
+  padding-top: 0;
+  padding-bottom: 0;
+  &.cm-hashtag-begin {
+    padding-left: 0.5em;
+  }
+  &.cm-hashtag-end {
+    padding-right: 0.5em;
+  }
+}
+body.tag-fill {
+  & :is(.markdown-rendered, .style-settings-container) a.tag,
+  & .metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill
+  {
+    border-color: var(--color-accent-o40);
+    background-color: var(--color-accent-o30);
+    color: var(--text-strong);
+    &:hover {
+      border-color: var(--color-accent-o80);
+      background-color: var(--color-accent-o60);
+      color: var(--text-strong);
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end) {
+    border-color: var(--color-accent-o40);
+    background-color: var(--color-accent-o30);
+    color: var(--text-strong);
+  }
+}
+body:not(.tag-fill) {
+  & :is(.markdown-rendered, .style-settings-container) a.tag,
+  & .metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill
+  {
+    border-color: var(--color-accent-o50);
+    background-color: transparent;
+    color: var(--text-strong);
+    &:hover {
+      border-color: var(--color-accent-o80);
+      background-color: var(--color-accent-o30);
+    }
+  }
+  & .markdown-source-view.is-live-preview .cm-line .cm-hashtag:is(.cm-hashtag-begin, .cm-hashtag-end) {
+    border-color: var(--color-accent-o50);
+    background-color: transparent;
+    color: var(--text-strong);
+  }
+}

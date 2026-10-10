@@ -1,3 +1,24 @@
+## Version 2.2.0(10/11/2026)
+
+### Added
+
+1. Theme source is nested CSS under `src/css/`. Run `python3 scripts/build.py` to generate `theme.css`. Language badges and alternative checkbox icons live in `src/data/` and are expanded by the build.
+2. Features that used to depend on Style Settings now default to on. The plugin can still override them or turn them off.
+
+### Changed
+
+1. Settings sections, the core-plugins search field, and hotkey filter pills use a thin border and a small corner.
+2. Checkbox-style toggles keep a steady inner square. The selected hotkey filter uses reversed text so it stays readable on the accent.
+3. Image embed captions sit under the image again.
+4. Bases group-by fields use the same input chrome as sort fields.
+5. On a narrow window, each status-bar item stays on one line and wraps onto another row, instead of stacking one character per line or being clipped.
+6. Settings opened in a new window no longer draw the modal border.
+7. Cover image, and the stills for toggles, tables, and glass panels.
+
+### Fixed
+
+1. Selectors and colors that no longer matched Obsidian 1.14, including square tabs, the ribbon corner, and settings navigation.
+
 ## Version 2.1.1(09/17/2026)
 
 ### Changed

@@ -856,12 +856,12 @@ body:is(.theme-light, .theme-dark) {
   --link-unresolved-decoration-line: underline;
   --link-unresolved-decoration-width: 1px;
   --link-unresolved-decoration-style: dashed;
-  --link-unresolved-decoration-color: hsla(var(--link-unresolved-color), 0.3);
+  --link-unresolved-decoration-color: color-mix(in srgb, var(--link-unresolved-color) 30%, transparent);
   --link-unresolved-decoration-offset: 0.3em;
-  --link-unresolved-decoration-color-hover: hsla(var(--link-unresolved-color-hover), 0.3);
+  --link-unresolved-decoration-color-hover: color-mix(in srgb, var(--link-unresolved-color-hover) 30%, transparent);
 
   // task list
-  --checkbox-checked-color: hsla(var(--color-h), var(--color-s), var(--color-l));
+  --checkbox-checked-color: hsl(var(--color-h), var(--color-s), var(--color-l));
   --checkbox-border-color: var(--color-base-70);
   --checkbox-color-hover: hsla(0, 0%, 73%, 0.5);
   --checkbox-unchecked-color-hover: hsla(var(--color-h), var(--color-s), calc(var(--color-l)), 0.5);
@@ -931,6 +931,9 @@ body:is(.theme-light, .theme-dark) {
   --color-main: hsl(var(--color-h), var(--color-s), var(--color-l));
   --color-accent: var(--color-main);
   --color-accent-1: var(--color-main);
+  --accent-h: var(--color-h);
+  --accent-s: var(--color-s);
+  --accent-l: var(--color-l);
   --color-accent-ln5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 5%));
   --color-accent-ln10: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
   --color-accent-ln15: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
@@ -1005,7 +1008,7 @@ body:is(.theme-light, .theme-dark) {
 
     --background-modifier-active-hover: #{$color-neutral-300};
     --background-modifier-border-focus: #{$color-neutral-300};
-    --background-modifier-error-rgb: #{$color-red-500};
+    --background-modifier-error-rgb: 239, 68, 68;
 
     --titlebar-isfocused: #ebebeb;
     --titlebar-not-focused: #b3b3b3;
@@ -1117,7 +1120,7 @@ body:is(.theme-light, .theme-dark) {
 
     --background-modifier-active-hover: #{$color-neutral-700};
     --background-modifier-border-focus: #{$color-neutral-700};
-    --background-modifier-error-rgb: #{$color-red-500};
+    --background-modifier-error-rgb: 239, 68, 68;
 
     --titlebar-isfocused: #171514;
     --titlebar-not-focused: #4c4c4d;
@@ -1270,7 +1273,7 @@ body:is(.theme-light, .theme-dark) {
 // make collapse indicator invisible and the same position as the level indicator
 // so clicking the level indicator will trigger the collapse event
 // NOTE: body class for Style Settings
-body.header-level-indicator {
+body:not(.qlean-off-header-level-indicator) {
   & .markdown-source-view.is-live-preview .cm-line.HyperMD-header,
   & .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
     // level indicator style
@@ -1326,8 +1329,7 @@ body.header-level-indicator {
   padding: 0;
 
   // underline style
-  body.header-hovering-underline-grow &,
-  body.header-hovering-underline-fade & {
+  body:not(.header-hovering-underline-none) & {
     &::after {
       content: "";
       display: block;
@@ -1338,7 +1340,7 @@ body.header-level-indicator {
   }
 
   // NOTE: body class for Style Settings
-  body.header-hovering-underline-grow & {
+  body:not(.header-hovering-underline-none):not(.header-hovering-underline-fade) & {
     &::after {
       background-color: var(--text-normal);
       transition: width 0.2s;
@@ -1491,7 +1493,7 @@ body.font-highlight-cover-mode {
 }
 
 // NOTE: body class for Style Settings
-body.enable-alternative-checkboxes {
+body:not(.qlean-off-alternative-checkboxes) {
   // disable the children of a `x` task in muted color
   & .markdown-rendered .task-list-item {
     & > ul {
@@ -1501,7 +1503,7 @@ body.enable-alternative-checkboxes {
 
   // unchecked checkbox
   & .markdown-source-view.is-live-preview .HyperMD-task-line[data-task=" "] .task-list-item-checkbox,
-  & .markdown-rendered .task-list-item:not(.is-checked) .task-list-item-checkbox {
+  & .markdown-rendered .task-list-item[data-task=" "] .task-list-item-checkbox {
     &:hover {
       border-color: $color-green-500;
     }
@@ -1526,7 +1528,7 @@ body.enable-alternative-checkboxes {
 }
 
 // NOTE: body class for Style Settings
-body.circle-checkbox {
+body:not(.qlean-off-circle-checkbox) {
   & .markdown-source-view.is-live-preview .HyperMD-task-line,
   & .markdown-rendered .task-list-item {
     & .task-list-item-checkbox {
@@ -2038,8 +2040,8 @@ $checkbox-items: (
 // #endregion
 
 .markdown-source-view.is-live-preview .HyperMD-task-line:not([data-task=" "]) .task-list-item-checkbox,
-.markdown-rendered .task-list-item.is-checked > p > .task-list-item-checkbox,
-.markdown-rendered .task-list-item.is-checked > .task-list-item-checkbox {
+.markdown-rendered .task-list-item:is([data-task="x"], [data-task="X"]) > p > .task-list-item-checkbox,
+.markdown-rendered .task-list-item:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox {
   border: 1px solid transparent;
   background-color: transparent;
 
@@ -2056,7 +2058,7 @@ $checkbox-items: (
 }
 
 // NOTE: body class for Style Settings
-body.enable-alternative-checkboxes {
+body:not(.qlean-off-alternative-checkboxes) {
   & .markdown-source-view.is-live-preview .HyperMD-task-line,
   & .markdown-rendered .task-list-item {
     & .task-list-item-checkbox {
@@ -2096,7 +2098,7 @@ body.enable-alternative-checkboxes {
   }
 
   // NOTE: body class for Style Settings
-  &.checkbox-uppercase-set-social {
+  &:not(.checkbox-uppercase-set-letter) {
     & .markdown-source-view.is-live-preview .HyperMD-task-line,
     & .markdown-rendered .task-list-item {
       $checkbox-items-upper: (
@@ -2599,7 +2601,7 @@ body.enable-alternative-checkboxes {
   }
 
   // NOTE: body class for Style Settings
-  body.callout-border & {
+  body:not(.qlean-off-callout-border) & {
     border-width: 1px;
   }
 
@@ -2702,26 +2704,20 @@ body.enable-alternative-checkboxes {
 .markdown-rendered .media-embed {
   // alt
   &:after {
-    body.embed-alt & {
+    body:not(.qlean-off-embed-alt) & {
       content: attr(alt);
       @include font(var(--font-text), 0.8em, 100, var(--text-muted));
       display: block;
       width: 100%;
       margin-top: 0.5em;
-    }
-
-    // NOTE: body class for Style Settings
-    body.embed-alt.embed-alt-right & {
       text-align: end;
     }
 
-    // NOTE: body class for Style Settings
-    body.embed-alt.embed-alt-left & {
+    body:not(.qlean-off-embed-alt).embed-alt-left & {
       text-align: start;
     }
 
-    // NOTE: body class for Style Settings
-    body.embed-alt.embed-alt-middle & {
+    body:not(.qlean-off-embed-alt).embed-alt-middle & {
       text-align: center;
     }
   }
@@ -2918,7 +2914,7 @@ body.enable-alternative-checkboxes {
   margin: 2em 0;
 
   // NOTE: body class for Style Settings
-  body.full-width-table & {
+  body:not(.qlean-off-full-width-table) & {
     width: 100%;
 
     & > table {
@@ -2962,7 +2958,7 @@ body.enable-alternative-checkboxes {
       border-bottom: 1.5px solid var(--text-normal);
 
       // NOTE: body class for Style Settings
-      body.center-table-header & {
+      body:not(.qlean-off-center-table-header) & {
         text-align: center;
       }
 
@@ -3157,7 +3153,7 @@ body.tag-fill {
 }
 
 // NOTE: body class for Style Settings
-body.tag-outline {
+body:not(.tag-fill) {
   & .markdown-rendered a.tag,
   & .metadata-container .metadata-property[data-property-key="tags"] .multi-select-pill {
     border-color: var(--color-accent-o50);
@@ -3462,7 +3458,7 @@ body.tag-outline {
 // file tree
 .workspace {
   // NOTE: body class for Style Settings
-  body.color-expanded-folder-indicator & .tree-item-icon:not(.is-collapsed) svg {
+  body:not(.qlean-off-color-expanded-folder-indicator) & .tree-item-icon:not(.is-collapsed) svg {
     stroke: var(--color-accent);
   }
 
@@ -3486,7 +3482,7 @@ body.tag-outline {
 
   // folder icon
   // NOTE: body class for Style Settings
-  body.file-tree-icons & {
+  body:not(.qlean-off-file-tree-icons) & {
     & .nav-file .nav-file-title .nav-file-title-content,
     & .nav-folder .nav-folder-title .nav-folder-title-content:not(:nth-child(1)) {
       &:before {
@@ -3595,24 +3591,24 @@ body.tag-outline {
 }
 
 // NOTE: body class for Style Settings
-body.indicate-ascendant .tree-item:has(.tree-item-self:hover):not(.mod-root) > .tree-item-self:not(.is-active) {
+body:not(.qlean-off-indicate-ascendant) .tree-item:has(.tree-item-self:hover):not(.mod-root) > .tree-item-self:not(.is-active) {
   background-color: var(--nav-item-background-hover);
   border-radius: 0.125em;
   opacity: 0.8;
 }
 
-.workspace .tree-item-self:not(.is-acitve, .tree-item-self.mod-root > .tree-item-self):hover {
+.workspace .tree-item-self:not(.is-active):not(.mod-root):hover {
   opacity: 0.8;
 
   // NOTE: body class for Style Settings
-  body.indicate-child & ~ .tree-item-children {
+  body:not(.qlean-off-indicate-child) & ~ .tree-item-children {
     background-color: var(--nav-item-background-hover);
     border-radius: 0.125em;
   }
 }
 
 // NOTE: body class for Style Settings
-body.active-file-border .workspace .tree-item-self.is-active {
+body:not(.qlean-off-active-file-border) .workspace .tree-item-self.is-active {
   border: 1px solid var(--color-accent);
   border-radius: 0.125em;
   color: var(--text-strong);
@@ -3620,7 +3616,7 @@ body.active-file-border .workspace .tree-item-self.is-active {
 }
 
 // NOTE: body class for Style Settings
-body.opaque-expanded-folder .workspace .tree-item:not(.is-collapsed) > .tree-item-self {
+body:not(.qlean-off-opaque-expanded-folder) .workspace .tree-item:not(.is-collapsed) > .tree-item-self {
   opacity: 1;
 }
 
@@ -3755,7 +3751,7 @@ button.mod-cta {
   &:hover {
     background-color: var(--interactive-hover);
     color: var(--color-accent-o80);
-    border-color: var(--color-accent-80);
+    border-color: var(--color-accent-o80);
   }
 }
 
@@ -4046,7 +4042,7 @@ body.toggle-style-default .checkbox-container.mod-small {
 }
 
 // NOTE: body class for Style Settings
-body.toggle-style-checkbox .setting-item-control {
+body:not(.toggle-style-default) .setting-item-control {
   background-color: transparent;
   border: none;
 
@@ -4114,7 +4110,7 @@ body.toggle-style-checkbox .setting-item-control {
 
 // focus mode
 // NOTE: body class for Style Settings
-body.fade-out-inactive-lines {
+body:not(.qlean-off-fade-out-inactive-lines) {
   & :is(.cm-line:not(.cm-active), .cm-embed-block) {
     transition: var(--focus-transition-duration);
     opacity: var(--inactive-opacity);
@@ -4460,7 +4456,7 @@ body.zen-mode {
   border-radius: 0.125em;
 }
 
-body.glassmorphism-command-palette {
+body:not(.qlean-off-glassmorphism) {
   &.theme-dark {
     --background-color-glass: rgba(0, 0, 0, 0.8);
   }
@@ -4492,12 +4488,12 @@ body.glassmorphism-command-palette {
     display: none;
   }
 
-  body:not(.fade-out-inactive-lines)
+  body.qlean-off-fade-out-inactive-lines
     &:is([data-id="inactive-opacity"], [data-id="inactive-hover-opacity"], [data-id="focus-transition-duration"]) {
     display: none;
   }
 
-  body:not(.enable-alternative-checkboxes) &[data-id="checkbox-uppercase-set"] {
+  body.qlean-off-alternative-checkboxes &[data-id="checkbox-uppercase-set"] {
     display: none;
   }
 }
@@ -5169,8 +5165,16 @@ settings:
     title.zh: 标题层级指示器
     description: If turned on, the collapse indicator will not be displayed and clicking the level indicator will fold or unfold the contents of a header.
     description.zh: 如果开启，折叠指示器将不会显示，点击标题层级指示器将展开或折叠标题下的内容。
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-header-level-indicator
+    options:
+    -
+      label: On
+      value: qlean-on-header-level-indicator
+    -
+      label: Off
+      value: qlean-off-header-level-indicator
   -
     id: header-hovering-underline
     title: Header Hovering Underline
@@ -5243,8 +5247,16 @@ settings:
     title.zh: 启用替代样式复选框
     description: Disable this if you are using your own implementation via a CSS Snippet.
     description.zh: 如果你在自己的 CSS 片段中实现了复选框样式，请关闭这个选项。
-    default: true
-    type: class-toggle
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-enable-alternative-checkboxes
+    options:
+    -
+      label: On
+      value: qlean-on-enable-alternative-checkboxes
+    -
+      label: Off
+      value: qlean-off-alternative-checkboxes
   -
     id: checkbox-uppercase-set
     title: Uppercase Set for Checkboxes
@@ -5262,8 +5274,16 @@ settings:
     id: circle-checkbox
     title: Circle Checkboxes
     title.zh: 圆形复选框
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-circle-checkbox
+    options:
+    -
+      label: On
+      value: qlean-on-circle-checkbox
+    -
+      label: Off
+      value: qlean-off-circle-checkbox
   -
     id: callout-style
     title: Callouts
@@ -5277,8 +5297,16 @@ settings:
     title.zh: Callouts 边框
     description: Enabling this along with `Dosg Ear` will be kind of weird but if you like it, go ahead.
     description.zh: 同时启用这个选项和“折角”会有点奇怪……但如果你喜欢，就试试吧。
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-callout-border
+    options:
+    -
+      label: On
+      value: qlean-on-callout-border
+    -
+      label: Off
+      value: qlean-off-callout-border
   -
     id: colorful-callout-title
     title: Colorful Callouts Title
@@ -5316,14 +5344,30 @@ settings:
     title.zh: 始终居中表头行
     description: If turned on, the header rows will always be centered.
     description.zh: 如果开启，表头行将始终居中。
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-center-table-header
+    options:
+    -
+      label: On
+      value: qlean-on-center-table-header
+    -
+      label: Off
+      value: qlean-off-center-table-header
   -
     id: full-width-table
     title: Full Width Tables
     title.zh: 全宽表格
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-full-width-table
+    options:
+    -
+      label: On
+      value: qlean-on-full-width-table
+    -
+      label: Off
+      value: qlean-off-full-width-table
   -
     id: top-bottom-table-border
     title: Top & Bottom Borders for Tables
@@ -5341,8 +5385,16 @@ settings:
     id: embed-alt
     title: Embeds Alt
     title.zh: Embeds 图片别名
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-embed-alt
+    options:
+    -
+      label: On
+      value: qlean-on-embed-alt
+    -
+      label: Off
+      value: qlean-off-embed-alt
   -
     id: embed-alt-position
     title: Embeds Alt Position
@@ -5377,20 +5429,44 @@ settings:
     id: file-tree-icons
     title: File Tree Icons
     title.zh: 文件树图标
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-file-tree-icons
+    options:
+    -
+      label: On
+      value: qlean-on-file-tree-icons
+    -
+      label: Off
+      value: qlean-off-file-tree-icons
   -
     id: color-expanded-folder-indicator
     title: Expanded Folder Indicator Coloring
     title.zh: 展开文件夹指示器着色
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-color-expanded-folder-indicator
+    options:
+    -
+      label: On
+      value: qlean-on-color-expanded-folder-indicator
+    -
+      label: Off
+      value: qlean-off-color-expanded-folder-indicator
   -
     id: active-file-border
     title: Active File Border
     title.zh: 当前文件边框
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-active-file-border
+    options:
+    -
+      label: On
+      value: qlean-on-active-file-border
+    -
+      label: Off
+      value: qlean-off-active-file-border
   -
     id: always-show-full-header-in-outline
     title: Always Show Full Header in Outline
@@ -5408,22 +5484,46 @@ settings:
     id: indicate-child
     title: Indicate Children When Hovering
     title.zh: 悬停时指示子文件夹
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-indicate-child
+    options:
+    -
+      label: On
+      value: qlean-on-indicate-child
+    -
+      label: Off
+      value: qlean-off-indicate-child
   -
     id: indicate-ascendant
     title: Indicate Ascendants When Hovering
     title.zh: 悬停时指示父文件夹
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-indicate-ascendant
+    options:
+    -
+      label: On
+      value: qlean-on-indicate-ascendant
+    -
+      label: Off
+      value: qlean-off-indicate-ascendant
   -
     id: opaque-expanded-folder
     title: Opaque Expanded Folders
     title.zh: 不透明展开文件夹
     description: If turned on, the expanded folders will be less transparent.
     description.zh: 如果开启，展开的文件夹将会更不透明。
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-opaque-expanded-folder
+    options:
+    -
+      label: On
+      value: qlean-on-opaque-expanded-folder
+    -
+      label: Off
+      value: qlean-off-opaque-expanded-folder
   -
 */
 /*
@@ -5448,8 +5548,16 @@ settings:
     id: glassmorphism-command-palette
     title: Glassmorphism Command Palette
     title.zh: 毛玻璃效果命令面板
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-glassmorphism-command-palette
+    options:
+    -
+      label: On
+      value: qlean-on-glassmorphism-command-palette
+    -
+      label: Off
+      value: qlean-off-glassmorphism
 */
 /*
 @settings
@@ -5460,8 +5568,16 @@ settings:
     id: fade-out-inactive-lines
     title: Fade Out Inactive Lines
     title.zh: 淡化非活动行
-    type: class-toggle
-    default: true
+    type: class-select
+    allowEmpty: false
+    default: qlean-on-fade-out-inactive-lines
+    options:
+    -
+      label: On
+      value: qlean-on-fade-out-inactive-lines
+    -
+      label: Off
+      value: qlean-off-fade-out-inactive-lines
   -
     id: inactive-opacity
     title: Inactive Lines Opacity

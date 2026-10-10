@@ -1,0 +1,161 @@
+.markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table),
+:is(.markdown-rendered, .style-settings-container) div:has(> table)
+{
+  margin: 2em 0;
+  & table {
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-collapse: collapse;
+    white-space: pre-wrap;
+    & td,
+    & th
+    {
+      border-color: var(--text-muted);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      line-height: 2;
+    }
+    & tr:last-child {
+      & td {
+        border-bottom: none;
+      }
+    }
+    & th {
+      font-family: var(--font-text);
+      font-size: 1em;
+      font-weight: 400;
+      color: var(--text-strong);
+      border-top-color: transparent;
+      border-bottom: 1.5px solid var(--text-normal);
+      & .cm-line.cm-active {
+        color: var(--text-strong);
+      }
+    }
+    & td,
+    & th
+    {
+      transition: background-color 0.2s, border-color 0.2s;
+      padding: 0.5em 1em;
+      vertical-align: middle;
+    }
+    & tr:hover {
+      & td,
+      & th
+      {
+        background-color: var(--background-modifier-active-hover);
+        border-left-color: var(--background-modifier-active-hover);
+        border-right-color: var(--background-modifier-active-hover);
+      }
+    }
+  }
+}
+body:not(.qlean-off-full-width-table) {
+  & .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table),
+  & :is(.markdown-rendered, .style-settings-container) div:has(> table)
+  {
+    width: 100%;
+    & > table {
+      width: 100%;
+    }
+  }
+}
+body.top-bottom-table-border {
+  & .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table,
+  & :is(.markdown-rendered, .style-settings-container) div:has(> table) table
+  {
+    border-top: 2px solid var(--text-normal);
+    border-bottom: 1px solid var(--text-normal);
+  }
+}
+body:not(.qlean-off-center-table-header) {
+  & .markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) table th,
+  & :is(.markdown-rendered, .style-settings-container) div:has(> table) table th
+  {
+    text-align: center;
+  }
+}
+.markdown-source-view.is-live-preview .cm-table-widget .table-wrapper:has(> table) {
+  margin: 0;
+  & .table-row-btn,
+  & .table-col-btn
+  {
+    border: 1px solid var(--text-muted);
+    cursor: pointer;
+    & svg {
+      color: var(--text-muted);
+    }
+  }
+  & table {
+    & .table-col-drag-handle {
+      left: 0;
+    }
+    & .table-row-drag-handle {
+      top: 0;
+      & svg {
+        transform: scale(1.5);
+      }
+    }
+    & th:hover :is(.table-col-drag-handle, .table-row-drag-handle),
+    & td:hover .table-row-drag-handle
+    {
+      opacity: 1;
+      border: 2px solid var(--text-strong);
+      color: var(--text-strong);
+    }
+    & .table-row-drag-handle,
+    & .table-col-drag-handle
+    {
+      &:active {
+        box-shadow: none;
+        border: 2px solid var(--text-strong);
+        background-color: var(--text-strong);
+      }
+    }
+    & :is(tr, td, th).is-selected {
+      &:after {
+        background-color: var(--color-accent-o10);
+      }
+      &.start::after {
+        left: -1px;
+        border-left: 2px solid var(--text-normal);
+      }
+      &.end::after {
+        right: -1px;
+        border-right: 2px solid var(--text-normal);
+      }
+      &.top::after {
+        top: -1px;
+        border-top: 2px solid var(--text-normal);
+      }
+      &.bottom::after {
+        bottom: -1px;
+        border-bottom: 2px solid var(--text-normal);
+      }
+      &.start.top::after {
+        border-top-left-radius: 0;
+      }
+      &.start.bottom::after {
+        border-bottom-left-radius: 0;
+      }
+      &.end.top::after {
+        border-top-right-radius: 0;
+      }
+      &.end.bottom::after {
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+  & .table-cell-wrapper {
+    padding: 0;
+    height: fit-content;
+  }
+}
+.markdown-source-view.is-live-preview .cm-table-widget.is-dragging .table-wrapper:has(> table) {
+  & table {
+    & th:hover :is(.table-col-drag-handle, .table-row-drag-handle),
+    & td:hover .table-row-drag-handle
+    {
+      color: var(--background-primary);
+    }
+  }
+}

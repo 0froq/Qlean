@@ -1,0 +1,213 @@
+:is(.markdown-rendered, .style-settings-container) .callout {
+  margin: 2em auto;
+}
+.markdown-source-view.is-live-preview .callout,
+:is(.markdown-rendered, .style-settings-container) .callout
+{
+  position: relative;
+  padding: 0.5em 1em;
+  border-radius: 0.125em;
+  mix-blend-mode: normal;
+  & .callout-title,
+  & .callout-icon svg
+  {
+    font-family: var(--font-text);
+    font-size: 1.125em;
+    font-weight: 700;
+    color: auto;
+  }
+  & .callout-title {
+    line-height: 1.5;
+    margin: 0.5em 0;
+  }
+  &[data-callout="note"] {
+    background-color: color-mix(in srgb, var(--callout-note-bg-color), transparent 20%);
+  }
+  &[data-callout="abstract"] {
+    background-color: color-mix(in srgb, var(--callout-abstract-bg-color), transparent 20%);
+  }
+  &[data-callout="summary"] {
+    background-color: color-mix(in srgb, var(--callout-summary-bg-color), transparent 20%);
+  }
+  &[data-callout="tldr"] {
+    background-color: color-mix(in srgb, var(--callout-tldr-bg-color), transparent 20%);
+  }
+  &[data-callout="info"] {
+    background-color: color-mix(in srgb, var(--callout-info-bg-color), transparent 20%);
+  }
+  &[data-callout="todo"] {
+    background-color: color-mix(in srgb, var(--callout-todo-bg-color), transparent 20%);
+  }
+  &[data-callout="tip"] {
+    background-color: color-mix(in srgb, var(--callout-tip-bg-color), transparent 20%);
+  }
+  &[data-callout="hint"] {
+    background-color: color-mix(in srgb, var(--callout-hint-bg-color), transparent 20%);
+  }
+  &[data-callout="important"] {
+    background-color: color-mix(in srgb, var(--callout-important-bg-color), transparent 20%);
+  }
+  &[data-callout="success"] {
+    background-color: color-mix(in srgb, var(--callout-success-bg-color), transparent 20%);
+  }
+  &[data-callout="check"] {
+    background-color: color-mix(in srgb, var(--callout-check-bg-color), transparent 20%);
+  }
+  &[data-callout="done"] {
+    background-color: color-mix(in srgb, var(--callout-done-bg-color), transparent 20%);
+  }
+  &[data-callout="question"] {
+    background-color: color-mix(in srgb, var(--callout-question-bg-color), transparent 20%);
+  }
+  &[data-callout="help"] {
+    background-color: color-mix(in srgb, var(--callout-help-bg-color), transparent 20%);
+  }
+  &[data-callout="faq"] {
+    background-color: color-mix(in srgb, var(--callout-faq-bg-color), transparent 20%);
+  }
+  &[data-callout="warning"] {
+    background-color: color-mix(in srgb, var(--callout-warning-bg-color), transparent 20%);
+  }
+  &[data-callout="caution"] {
+    background-color: color-mix(in srgb, var(--callout-caution-bg-color), transparent 20%);
+  }
+  &[data-callout="attention"] {
+    background-color: color-mix(in srgb, var(--callout-attention-bg-color), transparent 20%);
+  }
+  &[data-callout="failure"] {
+    background-color: color-mix(in srgb, var(--callout-failure-bg-color), transparent 20%);
+  }
+  &[data-callout="fail"] {
+    background-color: color-mix(in srgb, var(--callout-fail-bg-color), transparent 20%);
+  }
+  &[data-callout="missing"] {
+    background-color: color-mix(in srgb, var(--callout-missing-bg-color), transparent 20%);
+  }
+  &[data-callout="danger"] {
+    background-color: color-mix(in srgb, var(--callout-danger-bg-color), transparent 20%);
+  }
+  &[data-callout="error"] {
+    background-color: color-mix(in srgb, var(--callout-error-bg-color), transparent 20%);
+  }
+  &[data-callout="bug"] {
+    background-color: color-mix(in srgb, var(--callout-bug-bg-color), transparent 20%);
+  }
+  &[data-callout="example"] {
+    background-color: color-mix(in srgb, var(--callout-example-bg-color), transparent 20%);
+  }
+  &[data-callout="quote"] {
+    background-color: color-mix(in srgb, var(--callout-quote-bg-color), transparent 20%);
+  }
+  &[data-callout="cite"] {
+    background-color: color-mix(in srgb, var(--callout-cite-bg-color), transparent 20%);
+  }
+  & :is(p, ul, ol, blockquote, .callout, pre, table) {
+    margin: 0.5em 0;
+    line-height: 1.75;
+  }
+}
+body:not(.qlean-off-callout-border) {
+  & .markdown-source-view.is-live-preview .callout,
+  & :is(.markdown-rendered, .style-settings-container) .callout
+  {
+    border-width: 1px;
+  }
+}
+body.callout-dogs-ear {
+  & .markdown-source-view.is-live-preview .callout,
+  & :is(.markdown-rendered, .style-settings-container) .callout
+  {
+    &:after {
+      content: "";
+      position: absolute;
+      top: auto;
+      right: 0;
+      bottom: 0;
+      width: var(--callout-dogs-ear-size);
+      height: var(--callout-dogs-ear-size);
+      background: linear-gradient(to bottom right, rgba(200, 200, 200, 0.3) 50%, var(--background-primary) 50%);
+      -webkit-backdrop-filter: blur(2.5px);
+      backdrop-filter: blur(2.5px);
+      transition: width 0.2s, height 0.2s;
+      box-shadow: -1px 2px 3px 2px rgba(0, 0, 0, 0.2);
+    }
+    &:hover:after {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+body:not(.colorful-callout-title) {
+  & .markdown-source-view.is-live-preview .callout .callout-title,
+  & :is(.markdown-rendered, .style-settings-container) .callout .callout-title,
+  & .markdown-source-view.is-live-preview .callout .callout-icon svg,
+  & :is(.markdown-rendered, .style-settings-container) .callout .callout-icon svg
+  {
+    color: var(--text-normal);
+  }
+}
+.markdown-source-view.is-live-preview .HyperMD-quote.cm-line {
+  background-color: var(--quote-bg-color);
+  &::before,
+  & .cm-blockquote-border::before
+  {
+    border-left: 4px solid var(--text-muted);
+  }
+}
+:is(.markdown-rendered, .style-settings-container) blockquote {
+  margin: 2em auto;
+  padding: 1.25em 2em;
+  background-color: var(--quote-bg-color);
+  border-radius: 0.125em;
+  color: var(--text-muted);
+  border-left: 4px solid var(--text-muted);
+  transition: border-color 0.2s ease;
+  position: relative;
+  & > p:first-child::before {
+    content: "”";
+    font-family: "Arial Black", sans-serif;
+    position: absolute;
+    display: block;
+    top: -10px;
+    right: 10px;
+    font-size: 6em;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--text-muted);
+    opacity: 0.2;
+  }
+  &:hover {
+    border-left-color: var(--text-normal);
+  }
+}
+.markdown-source-view.is-live-preview .mermaid,
+:is(.markdown-rendered, .style-settings-container) .mermaid
+{
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    appearance: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    border-radius: 0;
+    border-bottom: 2px solid var(--text-strong);
+    border-right: none;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-normal);
+  }
+  border: 1px solid var(--border-color);
+  border-radius: 0.125em;
+  background-color: var(--background-primary);
+  overflow-x: auto;
+  & p {
+    font-family: var(--font-text);
+    font-size: 1em;
+    font-weight: 400;
+    color: inherit;
+    line-height: 1.5;
+    margin: 0.5em;
+  }
+}

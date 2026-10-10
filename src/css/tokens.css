@@ -1,0 +1,471 @@
+/* Modifiers wrap the component. `&` only reaches inward.
+ * Do not write `body.modifier &` inside a component. */
+* {
+  box-sizing: border-box;
+}
+body:is(.theme-light, .theme-dark) {
+  --font-default: "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Helvetica Neue", "WenQuanYi Micro Hei", "Helvetica", "Arial", sans-serif;
+  --font-monospace-default: iawriter-mono, Nitti, Menlo, Courier, monospace;
+  --font-monospace: var(--font-monospace-default);
+  --font-text: var(--font-default);
+  --font-tag: var(--font-monospace);
+  --font-file-tree: var(--font-default);
+  --font-source-view: var(--font-monospace);
+  --font-vault-name: var(--font-file-tree);
+  --font-interface-override: "";
+  --font-tag-size: 1em;
+  --font-latex-size: 1em;
+  --font-monospace-size: 1em;
+  --font-file-tree-size: 0.95em;
+  --font-vault-name-size: 1.25em;
+  --font-source-view-size: 1em;
+  --font-text-weight: 400;
+  --font-tag-weight: 400;
+  --font-latex-weight: 400;
+  --font-monospace-weight: 400;
+  --font-file-tree-weight: 400;
+  --font-vault-name-weight: 400;
+  --font-source-view-weight: 400;
+  --font-header: var(--font-text);
+  --font-h1-size: 2.25em;
+  --font-h2-size: 1.875em;
+  --font-h3-size: 1.5em;
+  --font-h4-size: 1.25em;
+  --font-h5-size: 1.125em;
+  --font-h6-size: 1em;
+  --font-h1-weight: normal;
+  --font-h2-weight: var(--font-h1-weight);
+  --font-h3-weight: var(--font-h1-weight);
+  --font-h4-weight: var(--font-h1-weight);
+  --font-h5-weight: var(--font-h1-weight);
+  --font-h6-weight: var(--font-h1-weight);
+  --h1-color: var(--color-default-h1);
+  --h2-color: var(--color-default-h2);
+  --h3-color: var(--color-default-h3);
+  --h4-color: var(--color-default-h4);
+  --h5-color: var(--color-default-h5);
+  --h6-color: var(--color-default-h6);
+  --color-default-h1: var(--text-normal);
+  --color-default-h2: var(--text-normal);
+  --color-default-h3: var(--text-normal);
+  --color-default-h4: var(--text-normal);
+  --color-default-h5: var(--text-normal);
+  --color-default-h6: var(--text-normal);
+  --color-accent-h1: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h2: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h3: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h4: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h5: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent-h6: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-gradient-h1: hsla(var(--color-h), var(--color-s), var(--color-l), 1);
+  --color-gradient-h2: hsla(var(--color-h), var(--color-s), var(--color-l), 0.95);
+  --color-gradient-h3: hsla(var(--color-h), var(--color-s), var(--color-l), 0.9);
+  --color-gradient-h4: hsla(var(--color-h), var(--color-s), var(--color-l), 0.85);
+  --color-gradient-h5: hsla(var(--color-h), var(--color-s), var(--color-l), 0.8);
+  --color-gradient-h6: hsla(var(--color-h), var(--color-s), var(--color-l), 0.75);
+  --font-strong-size: 1em;
+  --font-strong-weight: 900;
+  --font-strong-style: normal;
+  --font-strong-color: var(--text-strong);
+  --font-strong-decoration-line: none;
+  --font-strong-decoration-width: 1px;
+  --font-strong-decoration-style: solid;
+  --font-strong-decoration-color: var(--font-strong-color);
+  --font-strong-decoration-offset: 2px;
+  --font-em-size: 1em;
+  --font-em-weight: normal;
+  --font-em-style: italic;
+  --font-em-color: var(--text-normal);
+  --font-em-decoration-line: none;
+  --font-em-decoration-width: 1px;
+  --font-em-decoration-style: solid;
+  --font-em-decoration-color: var(--font-em-color);
+  --font-em-decoration-offset: 2px;
+  --font-highlight-size: 1em;
+  --font-highlight-weight: normal;
+  --font-highlight-style: normal;
+  --font-highlight-color: var(--text-reversed);
+  --font-highlight-bg-color: var(--color-accent);
+  --font-highlight-decoration-width: 2px;
+  --font-highlight-decoration-style: solid;
+  --font-highlight-decoration-line: none;
+  --font-highlight-decoration-color: var(--text-normal);
+  --font-highlight-decoration-offset: 3px;
+  --font-strikethrough-size: 1em;
+  --font-strikethrough-weight: normal;
+  --font-strikethrough-style: normal;
+  --font-strikethrough-color: var(--text-muted);
+  --font-strikethrough-decoration-line: line-through;
+  --font-strikethrough-decoration-width: 2px;
+  --font-strikethrough-decoration-style: solid;
+  --font-strikethrough-decoration-color: var(--font-strikethrough-color);
+  --font-underlined-size: 1em;
+  --font-underlined-weight: normal;
+  --font-underlined-color: var(--text-normal);
+  --font-underlined-decoration-line: underline;
+  --font-underlined-decoration-width: 2px;
+  --font-underlined-decoration-style: wavy;
+  --font-underlined-decoration-color: var(--font-underlined-color);
+  --font-underlined-decoration-offset: 6px;
+  --font-inline-title: var(--font-header);
+  --font-inline-title-size: 2em;
+  --font-inline-title-weight: 900;
+  --link-unresolved-color: var(--color-accent-o90);
+  --link-unresolved-color-hover: var(--color-accent);
+  --link-external-color: var(--color-accent-ln5);
+  --link-external-color-hover: var(--color-accent-ln5);
+  --link-color: var(--color-accent-ln5);
+  --link-color-hover: var(--color-accent-ln5);
+  --font-inline-tile-color: var(--text-normal);
+  --text-accent-hover: var(--text-strong);
+  --link-decoration-line: underline;
+  --link-decoration-thickness: 1px;
+  --link-decoration-style: solid;
+  --link-decoration-color: var(--link-color);
+  --link-decoration-offset: 0.3em;
+  --link-unresolved-decoration-line: underline;
+  --link-unresolved-decoration-width: 1px;
+  --link-unresolved-decoration-style: dashed;
+  --link-unresolved-decoration-color: color-mix(in srgb, var(--link-unresolved-color) 30%, transparent);
+  --link-unresolved-decoration-offset: 0.3em;
+  --link-unresolved-decoration-color-hover: color-mix(in srgb, var(--link-unresolved-color-hover) 30%, transparent);
+  --checkbox-checked-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --checkbox-border-color: var(--color-base-70);
+  --checkbox-color-hover: hsla(0, 0%, 73%, 0.5);
+  --checkbox-unchecked-color-hover: hsla(var(--color-h), var(--color-s), calc(var(--color-l)), 0.5);
+  --checkbox-color: #22c55e;
+  --checklist-decoration-color: var(--text-normal);
+  --checklist-decoration-line: none;
+  --checklist-done-decoration-color: var(--text-muted);
+  --checklist-done-decoration-line: none;
+  --checklist-delete-decoration-color: var(--background-modifier-error);
+  --checklist-delete-decoration-line: line-through;
+  --tag-radius: 0em;
+  --blockquote-border-thickness: 2px;
+  --callout-dogs-ear-size: 2em;
+  --tab-curve: 0;
+  --tab-radius: 0;
+  --tab-radius-active: 0;
+  --icon-color-focused: var(--color-accent-o80);
+  --icon-color-hovering: var(--text-strong);
+  --color-bw-h: 0;
+  --color-bw-s: 0%;
+  --color-sage-h: 88;
+  --color-sage-s: 23%;
+  --color-sage-l: 69%;
+  --color-sage-main: hsl(var(--color-sage-h), var(--color-sage-s), var(--color-sage-l));
+  --color-blue-h: 207;
+  --color-blue-s: 47%;
+  --color-blue-l: 73%;
+  --color-blue-main: hsl(var(--color-blue-h), var(--color-blue-s), var(--color-blue-l));
+  --color-peach-h: 0;
+  --color-peach-s: 37%;
+  --color-peach-l: 65%;
+  --color-peach-main: hsl(var(--color-peach-h), var(--color-peach-s), var(--color-peach-l));
+  --color-beige-h: 50;
+  --color-beige-s: 100%;
+  --color-beige-l: 91%;
+  --color-beige-main: hsl(var(--color-beige-h), var(--color-beige-s), var(--color-beige-l));
+  --color-pink-h: 0;
+  --color-pink-s: 100%;
+  --color-pink-l: 91%;
+  --color-pink-main: hsl(var(--color-pink-h), var(--color-pink-s), var(--color-pink-l));
+  --color-purple-h: 269;
+  --color-purple-s: 59%;
+  --color-purple-l: 85%;
+  --color-purple-main: hsl(var(--color-purple-h), var(--color-purple-s), var(--color-purple-l));
+  --accent-color-light-hue-default: 254;
+  --accent-color-light-saturation-default: 80%;
+  --accent-color-light-lightness-default: 68%;
+  --accent-color-dark-hue-default: 254;
+  --accent-color-dark-saturation-default: 80%;
+  --accent-color-dark-lightness-default: 68%;
+  --accent-h: var(--color-h);
+  --accent-s: var(--color-s);
+  --accent-l: var(--color-l);
+  --color-main: hsl(var(--color-h), var(--color-s), var(--color-l));
+  --color-accent: var(--color-main);
+  --color-accent-1: var(--color-main);
+  --accent-h: var(--color-h);
+  --accent-s: var(--color-s);
+  --accent-l: var(--color-l);
+  --color-accent-ln5: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 5%));
+  --color-accent-ln10: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
+  --color-accent-ln15: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 15%));
+  --color-accent-ln20: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 20%));
+  --color-accent-o90: hsla(var(--color-h), var(--color-s), var(--color-l), 0.9);
+  --color-accent-o80: hsla(var(--color-h), var(--color-s), var(--color-l), 0.8);
+  --color-accent-o70: hsla(var(--color-h), var(--color-s), var(--color-l), 0.7);
+  --color-accent-o60: hsla(var(--color-h), var(--color-s), var(--color-l), 0.6);
+  --color-accent-o50: hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
+  --color-accent-o40: hsla(var(--color-h), var(--color-s), var(--color-l), 0.4);
+  --color-accent-o30: hsla(var(--color-h), var(--color-s), var(--color-l), 0.3);
+  --color-accent-o20: hsla(var(--color-h), var(--color-s), var(--color-l), 0.2);
+  --color-accent-o10: hsla(var(--color-h), var(--color-s), var(--color-l), 0.1);
+  --text-selection: rgb(163 163 163 / 0.2);
+  --interactive-hover: rgb(163 163 163 / 0.2);
+  --interactive-accent: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 10%));
+  --interactive-accent-hover: hsl(var(--color-h), var(--color-s), calc(var(--color-l) - 5%));
+  --callout-note--text-color: var(--text-strong);
+  --callout-info-text-color: var(--text-strong);
+  --callout-todo-text-color: #0ea5e9;
+  --callout-tip-text-color: #0ea5e9;
+  --callout-hint-text-color: #0ea5e9;
+  --callout-important-text-color: #0ea5e9;
+  --callout-success-text-color: #22c55e;
+  --callout-check-text-color: #22c55e;
+  --callout-done-text-color: #22c55e;
+  --callout-question-text-color: #eab308;
+  --callout-help-text-color: #eab308;
+  --callout-faq-text-color: #eab308;
+  --callout-warning-text-color: #f97316;
+  --callout-caution-text-color: #f97316;
+  --callout-attention-text-color: #f97316;
+  --callout-failure-text-color: #ef4444;
+  --callout-fail-text-color: #ef4444;
+  --callout-missing-text-color: #ef4444;
+  --callout-danger-text-color: #ef4444;
+  --callout-error-text-color: #ef4444;
+  --callout-bug-text-color: #ef4444;
+  --callout-example-text-color: #8b5cf6;
+  --callout-quote-text-color: var(--text-strong);
+  --callout-cite-text-color: var(--text-strong);
+  --inactive-opacity: 0.3;
+  --inactive-hover-opacity: 0.8;
+  --focus-transition-duration: 0.2s;
+  --radius-s: 0.125em;
+  &.theme-light {
+    color-scheme: light;
+    --color-h: var(--color-bw-h);
+    --color-s: var(--color-bw-s);
+    --color-l: 10%;
+    --text-normal: #404040;
+    --text-strong: #171717;
+    --text-muted: #737373;
+    --text-reversed: #fafafa;
+    --code-bg-color: #f5f5f5;
+    --inline-code-bg-color: rgba(229, 229, 229, 0.5);
+    --inline-code-text-color: #525252;
+    --background-primary: #fafafa;
+    --background-primary-alt: #e5e5e5;
+    --background-secondary: #f5f5f5;
+    --background-secondary-alt: #d4d4d4;
+    --background-modifier-active-hover: #d4d4d4;
+    --background-modifier-border-focus: #d4d4d4;
+    --background-modifier-error-rgb: 239, 68, 68;
+    --titlebar-isfocused: #ebebeb;
+    --titlebar-not-focused: #b3b3b3;
+    --divider-color: #d4d4d4;
+    --tab-bg-color: #f5f5f5;
+    --tab-hover-bg-color: var(--background-modifier-active-hover);
+    --tab-active-bg-color: #e5e5e5;
+    --close-button-hover-bg-color: rgba(0, 0, 0, 0.1);
+    --switch-inset-shadow-color: rgba(0, 0, 0, 0.2);
+    --quote-bg-color: rgba(10, 10, 10, 0.05);
+    --callout-note-bg-color: rgb(228, 238, 253);
+    --callout-info-bg-color: rgb(228, 238, 253);
+    --callout-todo-bg-color: rgb(228, 238, 253);
+    --callout-tip-bg-color: rgb(232, 248, 248);
+    --callout-hint-bg-color: rgb(232, 248, 248);
+    --callout-important-bg-color: rgb(232, 248, 248);
+    --callout-success-bg-color: rgb(232, 248, 234);
+    --callout-check-bg-color: rgb(232, 248, 234);
+    --callout-done-bg-color: rgb(232, 248, 234);
+    --callout-question-bg-color: rgb(255, 240, 229);
+    --callout-help-bg-color: rgb(255, 240, 229);
+    --callout-faq-bg-color: rgb(255, 240, 229);
+    --callout-warning-bg-color: rgb(255, 240, 229);
+    --callout-caution-bg-color: rgb(255, 240, 229);
+    --callout-attention-bg-color: rgb(255, 240, 229);
+    --callout-failure-bg-color: rgb(255, 232, 234);
+    --callout-fail-bg-color: rgb(255, 232, 234);
+    --callout-missing-bg-color: rgb(255, 232, 234);
+    --callout-danger-bg-color: rgb(255, 232, 234);
+    --callout-error-bg-color: rgb(255, 232, 234);
+    --callout-bug-bg-color: rgb(255, 232, 234);
+    --callout-example-bg-color: rgb(239, 235, 254);
+    --callout-quote-bg-color: rgb(244, 244, 244);
+    --callout-cite-bg-color: rgb(244, 244, 244);
+    --border-color: #d4d4d4;
+    &.accent-color-bw-dark {
+      --color-h: 0;
+      --color-s: 0%;
+      --color-l: 10%;
+    }
+    &.accent-color-sage-light {
+      --color-h: 84;
+      --color-s: 20%;
+      --color-l: 45%;
+    }
+    &.accent-color-blue-light {
+      --color-h: 211;
+      --color-s: 49%;
+      --color-l: 58%;
+    }
+    &.accent-color-peach-light {
+      --color-h: 0;
+      --color-s: 37%;
+      --color-l: 65%;
+    }
+    &.accent-color-beige-light {
+      --color-h: 30;
+      --color-s: 34%;
+      --color-l: 58%;
+    }
+    &.accent-color-pink-light {
+      --color-h: 324;
+      --color-s: 36%;
+      --color-l: 52%;
+    }
+    &.accent-color-purple-light {
+      --color-h: 289;
+      --color-s: 32%;
+      --color-l: 55%;
+    }
+    &.custom-accent-color {
+      --color-h: var(--accent-color-light-hue-default);
+      --color-s: var(--accent-color-light-saturation-default);
+      --color-l: var(--accent-color-light-lightness-default);
+    }
+  }
+  &.theme-dark {
+    color-scheme: dark;
+    --color-h: var(--color-bw-h);
+    --color-s: var(--color-bw-s);
+    --color-l: 90%;
+    --text-normal: #d4d4d4;
+    --text-strong: #f5f5f5;
+    --text-muted: #737373;
+    --text-reversed: #0a0a0a;
+    --code-bg-color: #171717;
+    --inline-code-bg-color: rgba(38, 38, 38, 0.5);
+    --inline-code-text-color: #a3a3a3;
+    --background-primary: #0a0a0a;
+    --background-primary-alt: #262626;
+    --background-secondary: #171717;
+    --background-secondary-alt: #404040;
+    --background-modifier-active-hover: #404040;
+    --background-modifier-border-focus: #404040;
+    --background-modifier-error-rgb: 239, 68, 68;
+    --titlebar-isfocused: #171514;
+    --titlebar-not-focused: #4c4c4d;
+    --divider-color: #404040;
+    --tab-bg-color: #171717;
+    --tab-hover-bg-color: var(--background-modifier-active-hover);
+    --tab-active-bg-color: #262626;
+    --close-button-hover-bg-color: rgba(255, 255, 255, 0.1);
+    --switch-inset-shadow-color: rgba(0, 0, 0, 0.2);
+    --quote-bg-color: rgba(250, 250, 250, 0.05);
+    --callout-note-bg-color: rgb(20, 32, 49);
+    --callout-info-bg-color: rgb(20, 32, 49);
+    --callout-todo-bg-color: rgb(20, 32, 49);
+    --callout-tip-bg-color: rgb(30, 44, 44);
+    --callout-hint-bg-color: rgb(30, 44, 44);
+    --callout-important-bg-color: rgb(30, 44, 44);
+    --callout-success-bg-color: rgb(26, 43, 30);
+    --callout-check-bg-color: rgb(26, 43, 30);
+    --callout-done-bg-color: rgb(26, 43, 30);
+    --callout-question-bg-color: rgb(47, 36, 25);
+    --callout-help-bg-color: rgb(47, 36, 25);
+    --callout-faq-bg-color: rgb(47, 36, 25);
+    --callout-warning-bg-color: rgb(47, 36, 25);
+    --callout-caution-bg-color: rgb(47, 36, 25);
+    --callout-attention-bg-color: rgb(47, 36, 25);
+    --callout-failure-bg-color: rgb(50, 26, 26);
+    --callout-fail-bg-color: rgb(50, 26, 26);
+    --callout-missing-bg-color: rgb(50, 26, 26);
+    --callout-danger-bg-color: rgb(50, 26, 26);
+    --callout-error-bg-color: rgb(50, 26, 26);
+    --callout-bug-bg-color: rgb(50, 26, 26);
+    --callout-example-bg-color: rgb(38, 32, 48);
+    --callout-quote-bg-color: rgb(36, 36, 36);
+    --callout-cite-bg-color: rgb(36, 36, 36);
+    --border-color: #404040;
+    &.accent-color-bw-dark {
+      --color-h: 0;
+      --color-s: 0%;
+      --color-l: 90%;
+    }
+    &.accent-color-sage-dark {
+      --color-h: 88;
+      --color-s: 23%;
+      --color-l: 69%;
+    }
+    &.accent-color-blue-dark {
+      --color-h: 207;
+      --color-s: 47%;
+      --color-l: 73%;
+    }
+    &.accent-color-peach-dark {
+      --color-h: 0;
+      --color-s: 37%;
+      --color-l: 65%;
+    }
+    &.accent-color-beige-dark {
+      --color-h: 50;
+      --color-s: 100%;
+      --color-l: 91%;
+    }
+    &.accent-color-pink-dark {
+      --color-h: 0;
+      --color-s: 100%;
+      --color-l: 91%;
+    }
+    &.accent-color-purple-dark {
+      --color-h: 269;
+      --color-s: 59%;
+      --color-l: 85%;
+    }
+    &.custom-accent-color {
+      --color-h: var(--accent-color-dark-hue-default);
+      --color-s: var(--accent-color-dark-saturation-default);
+      --color-l: var(--accent-color-dark-lightness-default);
+    }
+  }
+  &.colorful-headers {
+    --h1-color: var(--color-accent-h1);
+    --h2-color: var(--color-accent-h1);
+    --h3-color: var(--color-accent-h1);
+    --h4-color: var(--color-accent-h1);
+    --h5-color: var(--color-accent-h1);
+    --h6-color: var(--color-accent-h1);
+    &.header-color-gradient {
+      --h1-color: var(--color-gradient-h1);
+      --h2-color: var(--color-gradient-h2);
+      --h3-color: var(--color-gradient-h3);
+      --h4-color: var(--color-gradient-h4);
+      --h5-color: var(--color-gradient-h5);
+      --h6-color: var(--color-gradient-h6);
+    }
+  }
+}
+.cm-scroller,
+.nav-files-container,
+.search-result-container,
+.view-content,
+.tag-container,
+.vertical-tab-header,
+.vertical-tab-content,
+.prompt-results
+{
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    appearance: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    border-radius: 0;
+    border-right: 2px solid var(--text-strong);
+    border-bottom: none;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-normal);
+  }
+}
+.titlebar {
+  & .titlebar-button-container {
+    background-color: transparent;
+  }
+}

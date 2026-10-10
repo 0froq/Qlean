@@ -1,0 +1,92 @@
+body:not(.qlean-off-alternative-checkboxes) {
+  & :is(.markdown-rendered, .style-settings-container) .task-list-item {
+    & > ul {
+      color: var(--text-normal);
+    }
+  }
+  & .markdown-source-view.is-live-preview .HyperMD-task-line[data-task=" "] .task-list-item-checkbox,
+  & :is(.markdown-rendered, .style-settings-container) .task-list-item[data-task=" "] .task-list-item-checkbox
+  {
+    &:hover {
+      border-color: #22c55e;
+    }
+  }
+}
+.markdown-source-view.is-live-preview .HyperMD-task-line,
+:is(.markdown-rendered, .style-settings-container) .task-list-item
+{
+  &:is([data-task="x"], [data-task="X"]) {
+    text-decoration: none;
+  }
+  &[data-task="X"] {
+    color: var(--text-normal);
+  }
+  &[data-task="-"] {
+    color: var(--checklist-delete-decoration-color);
+  }
+}
+body:not(.qlean-off-circle-checkbox) {
+  & .markdown-source-view.is-live-preview .HyperMD-task-line,
+  & :is(.markdown-rendered, .style-settings-container) .task-list-item
+  {
+    & .task-list-item-checkbox {
+      border-radius: 50%;
+    }
+  }
+  & .bases-toolbar-menu-container input[type="checkbox"] {
+    border-radius: 50%;
+  }
+}
+.markdown-source-view.is-live-preview .HyperMD-task-line:not([data-task=" "]) .task-list-item-checkbox,
+:is(.markdown-rendered, .style-settings-container) .task-list-item:is([data-task="x"], [data-task="X"]) > p > .task-list-item-checkbox,
+:is(.markdown-rendered, .style-settings-container) .task-list-item:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox
+{
+  border: 1px solid transparent;
+  background-color: transparent;
+  &:hover::after {
+    background-color: #737373;
+  }
+  &:after {
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
+    mask-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256"><g fill="currentColor"><path d="m237.66 85.26l-128.4 128.4a8 8 0 0 1-11.32 0l-71.6-72a8 8 0 0 1 0-11.31l24-24a8 8 0 0 1 11.32 0L104 147.43l98.34-97.09a8 8 0 0 1 11.32 0l24 23.6a8 8 0 0 1 0 11.32" opacity=".2"/><path d="m243.28 68.24l-24-23.56a16 16 0 0 0-22.59 0L104 136.23l-36.69-35.6a16 16 0 0 0-22.58.05l-24 24a16 16 0 0 0 0 22.61l71.62 72a16 16 0 0 0 22.63 0L243.33 90.91a16 16 0 0 0-.05-22.67M103.62 208L32 136l24-24a.6.6 0 0 1 .08.08l42.35 41.09a8 8 0 0 0 11.19 0L208.06 56L232 79.6Z"/></g></svg>');
+    background-color: #22c55e;
+  }
+}
+body:not(.qlean-off-alternative-checkboxes) {
+  & .markdown-source-view.is-live-preview .HyperMD-task-line,
+  & :is(.markdown-rendered, .style-settings-container) .task-list-item
+  {
+    & .task-list-item-checkbox {
+      transition: background-color 0.2s, border-color 0.2s;
+      background-color: transparent;
+      &::after {
+        transition: background-color 0.2s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150%;
+        height: 150%;
+      }
+    }
+    /* @generate checkboxes base */
+  }
+  &:not(.checkbox-uppercase-set-letter) {
+    & .markdown-source-view.is-live-preview .HyperMD-task-line,
+    & :is(.markdown-rendered, .style-settings-container) .task-list-item
+    {
+      /* @generate checkboxes social */
+    }
+  }
+  &.checkbox-uppercase-set-letter {
+    & .markdown-source-view.is-live-preview .HyperMD-task-line,
+    & :is(.markdown-rendered, .style-settings-container) .task-list-item
+    {
+      /* @generate checkboxes letter */
+    }
+  }
+}
+:is(.markdown-rendered, .style-settings-container) li {
+  line-height: 2;
+}
